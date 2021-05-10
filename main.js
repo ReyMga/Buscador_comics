@@ -1,9 +1,11 @@
 const root = document.getElementById('root');
 
-const printData = arr => {
+const printData = data => {
     const pathNonFoundNowanted = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
     const pathNonFoundWanted = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny"
     let cajita = '';
+    let arr = data.results;
+    document.getElementById('quantity').innerText = data.total;
     arr.forEach(comic => {
         // console.log(comic);
         const {
@@ -17,7 +19,7 @@ const printData = arr => {
         cajita += `<div class="column is-one-fifth" onclick="getId(${id})">
             <figure>
                 <a>
-                <img src="${path === pathNonFoundNowanted ? pathNonFoundWanted : path}.${extension}" alt="${title}">
+                <img style='height: 320px; width: 210px' src="${path === pathNonFoundNowanted ? pathNonFoundWanted : path}.${extension}" alt="${title}">
                 <p>${title}</p>
                 </a>
             </figure>

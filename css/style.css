@@ -1,9 +1,4 @@
-/* .img {
-    background-image: url('http://wallpoper.com/images/00/25/59/04/marvel-comics_00255904.jpg');
-    background-position: center;
-    background-size: cover;
 
-} */
 
 body {
     background: #FFA17F;
@@ -22,6 +17,7 @@ body {
 
 .search {
     margin: 60px 17px 86px;
+    margin-left: 7%;
 }
 
 .header {
@@ -107,22 +103,28 @@ option {
     flex-wrap: wrap;
 }
 
+.results-title {
+    margin-left: 7%;
+}
+
 select:first-of-type {
     margin-right: 30px;
 }
 
-label {
+.results-count, label {
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #757575;
     margin-right: 10px;
+    margin-left: 7%;
+    margin-bottom: 2%;
 }
 
 .search-input-container {
     position: relative;
-    min-width: 50%;
+    min-width: 35%;
 }
 
 .sort-container {

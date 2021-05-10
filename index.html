@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Proyecto Comics</title>
+</head>
+
+
+
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="column logo-container">
+            <h1 class="logo">BIBLIOCOMIC'S</h1>
+        </div>
+    </header>
+
+    <!-- LOGO -->
+    <section class="hero is-danger is-halfheight img">
+        <div class="hero-body"></div>
+    </section>
+
+    <main class="column">
+        <!-- BUSQUEDA -->
+        <section class="search">
+            <h2 id="busqueda">BÚSQUEDA</h2>
+            <div class="search-container" id="columnas-busqueda">
+                <div class="search-input-container">
+                    <input id="input-busqueda" class="search-input" type="text" placeholder="Ingresa tu búsqueda">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="search-inner-container">
+                    <div class="sort-container">
+                        <label for="search-type" class="label mx-5 label-select pt-2">TIPO</label>
+                        <select name="search-type" id="select-tipo-personaje" class="select busquedaSelectSection">
+                            <option>COMICS</option>
+                            <option>PERSONAJES</option>
+                        </select>
+                        <label for="search-sort" class="label mx-5 label-select pt-2">ORDEN</label>
+                        <select id="select-orden" name="search-sort" class="select select-busq">
+                            <option>A/Z</option>
+                            <option>Z/A</option>
+                            <option>Más nuevos</option>
+                            <option>Más viejos</option>
+                        </select>
+                    </div>
+                    <button class="button is-warning mx-6" id="boton-buscar">BUSCAR</button>
+                </div>
+                <div>
+        </section>
+
+        <!-- GAALERIA COMICS -->
+        <section class="container mb-5">
+            <div id="root" class="columns is-flex-wrap-wrap"></div>
+        </section>
+
+        <!-- PAGINADOR -->
+        <section class="container is-flex is-justify-content-center my-6">
+            <button class="button button mr-3">
+                <i class="fas fa-caret-square-left is-size-4"></i>
+            </button>
+            <button class="button mr-2">
+                <i class="fas fa-caret-left is-size-4"></i>
+            </button>
+            <button class="button">
+                <i class="fas fa-caret-right is-size-4"></i>
+            </button>
+            <button class="button ml-3">
+                <i class="fas fa-caret-square-right is-size-4"></i>
+            </button>
+        </section>
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <span class="column">Hecho con 🤎 por Silvina & Raquel</span>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"
+        integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ=="
+        crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>

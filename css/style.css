@@ -1,0 +1,230 @@
+/* .img {
+    background-image: url('http://wallpoper.com/images/00/25/59/04/marvel-comics_00255904.jpg');
+    background-position: center;
+    background-size: cover;
+
+} */
+
+body {
+    background: #FFA17F;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00223E, #FFA17F);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00223E, #FFA17F);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.search {
+    margin: 60px 17px 86px;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(-225deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%);
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+
+}
+
+
+.search-container,
+.search-inner-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.search-inner-container {
+    flex-wrap: wrap;
+}
+
+
+select {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: bold;
+    border: 0;
+    margin-bottom: 10px;
+}
+
+footer {
+    width: 100%;
+    padding: 30px 0 40px;
+    background-color: #020202;
+    color: #fff;
+    margin-top: 120px;
+    text-align: center;
+    color: darkgray;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: nowrap;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+.search-button {
+    margin-left: 30px;
+    padding: 10px 15px;
+}
+
+.button.is-warning {
+    background-color: grey;
+    color: initial;
+}
+
+.button {
+    margin-bottom: auto;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+
+select:first-of-type {
+    margin-right: 30px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #757575;
+    margin-right: 10px;
+}
+
+.search-input-container {
+    position: relative;
+    min-width: 50%;
+}
+
+.sort-container {
+    display: contents;
+}
+
+.search-input {
+    border: 0;
+    border-bottom: 2px solid #151515;
+    width: 100%;
+    padding: 5px 35px;
+    border-radius: 0;
+    background-color: inherit;
+    font-size: 26px;
+    box-sizing: border-box;
+}
+
+.column {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.logo {
+    color: #ffed09;
+    -webkit-text-stroke: 2px black;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 45px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.title-busqueda {
+    color: #edc71d;
+    margin: 2%;
+}
+
+.navbar,
+.label {
+    color: rgb(24, 23, 23);
+}
+
+
+
+.busquedaSelectSection {
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* #busqueda {
+    -webkit-text-stroke: 2px grey;
+} */
+
+
+.hero {
+    width: 100%;
+    min-height: 400px;
+    background-image: url('http://wallpoper.com/images/00/25/59/04/marvel-comics_00255904.jpg');
+    background-size: cover;
+    position: relative;
+    background-position: center;
+    background-size: cover;
+}
+
+.hero::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.fa-search {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+    background-color: #CCCCCC;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FFF;
+    background-image: -webkit-linear-gradient(90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 25%,
+            transparent 100%,
+            rgba(0, 0, 0, 1) 75%,
+            transparent)
+}

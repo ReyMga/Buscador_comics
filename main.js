@@ -1,8 +1,8 @@
 const root = document.getElementById('root');
 
 const printData = data => {
-    const pathNonFoundNowanted = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
-    const pathNonFoundWanted = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny"
+    const pathNonFoundNowanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
+    const pathNonFoundWanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny"
     let cajita = '';
     let arr = data.results;
     document.getElementById('quantity').innerText = data.total;

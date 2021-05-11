@@ -1,5 +1,3 @@
-
-
 body {
     background: #FFA17F;
     /* fallback for old browsers */
@@ -54,6 +52,9 @@ h2 {
     flex-wrap: wrap;
 }
 
+a {
+    color: ghostwhite;
+}
 
 select {
     font-family: inherit;
@@ -111,7 +112,8 @@ select:first-of-type {
     margin-right: 30px;
 }
 
-.results-count, label {
+.results-count,
+label {
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 1px;

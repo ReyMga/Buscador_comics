@@ -18,7 +18,7 @@ let resultsCount = 0;
 // const url = `http://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
 
 const fetchData = () => {
-    const url = `http://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+    const url = `https://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
     fetch(url)
         .then(response => response.json())
         .then(obj => {
@@ -64,3 +64,4 @@ const getId = id => {
 }
 
 
+ 

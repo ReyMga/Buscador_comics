@@ -173,7 +173,13 @@ label {
     color: rgb(24, 23, 23);
 }
 
-
+.imgClass {
+    height: 100%;
+    box-shadow: 0 26px 24px -16px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+    transform: translateY(0);
+    transition: 0.2s;
+}
 
 .busquedaSelectSection {
     border: none;
@@ -234,4 +240,14 @@ label {
             transparent 100%,
             rgba(0, 0, 0, 1) 75%,
             transparent)
+}
+
+a:hover img {
+    transform: scale(1.2);
+    box-shadow: 5px 0px 3px rgba(0, 0, 0, 0.404);
+}
+
+a:hover p {
+    color: #acacca;
+    transform: scale(1.03);
 }

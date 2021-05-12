@@ -151,6 +151,8 @@ label {
     padding: 0 10px;
     padding-top: 1%;
     box-sizing: border-box;
+    color: black;
+    font-weight: 700;
 }
 
 .logo {
@@ -250,4 +252,9 @@ a:hover img {
 a:hover p {
     color: #acacca;
     transform: scale(1.03);
+}
+
+.footer{
+    color: orangered;
+    background-color: black;
 }

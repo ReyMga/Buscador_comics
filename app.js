@@ -61,6 +61,7 @@ const getId = id => {
     fetch(url)
         .then(resp => resp.json())
         .then(obj => printDetailComic(obj.data.results))
+        .catch(error => console.error(error))
 }
 
 

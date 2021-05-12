@@ -24,11 +24,13 @@ const printData = data => {
                 </a>
             </figure>
             </div>`
-        });
+    });
     root.innerHTML = cajita
 }
 
 const printDetailComic = arr => {
+    document.getElementById('resultSection').style.display = 'none';
+    document.getElementById('resultCount').style.display = 'none';
     let cajita = '';
     arr.forEach(comic => {
         const {
@@ -43,26 +45,41 @@ const printDetailComic = arr => {
         } = comic;
         const releaseDate = new Intl.DateTimeFormat('es-AR').format(new Date(dates ?.find(el => el.type === 'onsaleDate').date))
         const writer = creators ?.items ?.filter(el => el.role === 'writer')
-        cajita += `<div class="columns">
-      <div class="column is-one-quarter">
-        <figure class="img-detalle">
-          <img src="${path}.${extension}" alt="${title}">
-        </figure>
-      </div>
-      <div class="column">
-        <h3>${title}</h3>
-        <h4>Publicado:</h4>
-        <p>${releaseDate}</p>
-        <h4>Guioniistas:</h4>
-        <p>${writer ? writer[0]?.name : 'Sin informacion'}</p>
-        <h4>Descripción:</h4>
-        <p>${description}</p>
-      </div>
-    </div> `
+        cajita += `
+        <div class="columns" id="columns">
+            <div class="column is-one-quarter">
+                <figure class="img-detalle">
+                    <img src="${path}.${extension}" alt="${title}">
+                </figure>
+            </div>
+            <div class="column">
+                <h3>${title}</h3>
+                <br>
+                <h4>Publicado:</h4>
+                <p>${releaseDate}</p>
+                <br>
+                <h4>Guionistas:</h4>
+                <p>${writer ? writer[0]?.name : 'Sin informacion'}</p>
+                <br>
+                <h4>Descripción:</h4>
+                <p>${description}</p>
+            </div>
+        </div> 
+        
+        <div>
+        <h2>PERSONAJES</h2>
+        </div>
+        <div class="personaje hidden" id="personaje">
+          <img src="" alt="" class="character-portrait" />
+          <div class="character-details">
+            <h2 class="character-name"></h2>
+            <p class="character-description"></p>
+          </div>
+        </div>`
+
     })
     root.innerHTML = cajita
 
 }
 
 
-//  nombre ? 'hola'

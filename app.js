@@ -55,14 +55,24 @@ botonLastPage.onclick = () => {
 
 
 
-
-const getId = id => {
+//Segunda Pantalla
+const goToDetail = async id => {
     const url = `https://gateway.marvel.com/v1/public/comics/${id}?ts=${timestamp}&apikey=${publica}&hash=${hash}`;
-    fetch(url)
-        .then(resp => resp.json())
-        .then(obj => printDetailComic(obj.data.results))
-        .catch(error => console.error(error))
+    const characterUrl = `https://gateway.marvel.com/v1/public/comics/${id}/characters?apikey=${publica}&ts=${timestamp}&hash=${hash}&offset=0`
+
+    let data = await myFetch(url);
+    let character = await myFetch(characterUrl);
+    printDetailComic(data.data.results, character.data.results);
 }
 
 
- 
+const myFetch = async (url) => {
+    let response = await fetch(url);
+    if (!response.ok) {
+        const message = `An error has occured: ${response.status}`;
+        //throw new Error(message);
+        console.error(message);
+    }
+    const data = await response.json();
+    return data;
+}

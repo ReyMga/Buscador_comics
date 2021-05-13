@@ -254,7 +254,59 @@ a:hover p {
     transform: scale(1.03);
 }
 
-.footer{
+.footer {
     color: orangered;
     background-color: black;
+}
+
+
+.personaje {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 0 10px 40px;
+    cursor: pointer;
+}
+
+.resultados {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    margin-left: 10px;
+    min-height: 300px;
+}
+
+
+.tamañoImagen{
+    height: 100%;
+    transition: 0.2s;
+}
+
+img{
+    width: 100%;
+}
+
+.container-titulo-imagen{
+    padding: 16px 24px 17px 20px;
+    background-color: #151515;
+    transition: 0.2s;
+}
+
+.personaje-nombre {
+    color: #fff;
+    text-transform: uppercase;
+    height: 79px;
+    margin-bottom: 0;
+}
+
+.personaje,
+.personaje-nombre {
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.imagenPersonaje-container {
+    flex-grow: 1;
+    border-bottom: 4px solid #ed1d23;
+    overflow: hidden;
 }

@@ -16,7 +16,7 @@ const printData = data => {
             },
             id
         } = comic;
-        cajita += `<div class="column is-one-fifth" onclick="getId(${id})">
+        cajita += `<div class="column is-one-fifth" onclick="goToDetail(${id})">
             <figure class="imgClass">
                 <a>
                 <img style='height: 320px; width: 210px' src="${path === pathNonFoundNowanted ? pathNonFoundWanted : path}.${extension}" alt="${title}">
@@ -28,7 +28,7 @@ const printData = data => {
     root.innerHTML = cajita
 }
 
-const printDetailComic = arr => {
+const printDetailComic = (arr, arrCharacter) => {
     document.getElementById('resultSection').style.display = 'none';
     document.getElementById('resultCount').style.display = 'none';
     let cajita = '';
@@ -43,8 +43,8 @@ const printDetailComic = arr => {
             dates,
             creators
         } = comic;
-        const releaseDate = new Intl.DateTimeFormat('es-AR').format(new Date(dates ?.find(el => el.type === 'onsaleDate').date))
-        const writer = creators ?.items ?.filter(el => el.role === 'writer')
+        const releaseDate = new Intl.DateTimeFormat('es-AR').format(new Date(dates?.find(el => el.type === 'onsaleDate').date))
+        const writer = creators?.items?.filter(el => el.role === 'writer')
         cajita += `
         <div class="columns" id="columns">
             <div class="column is-one-quarter">
@@ -64,22 +64,34 @@ const printDetailComic = arr => {
                 <h4>Descripción:</h4>
                 <p>${description}</p>
             </div>
-        </div> 
-        
-        <div>
-        <h2>PERSONAJES</h2>
-        </div>
-        <div class="personaje hidden" id="personaje">
-          <img src="" alt="" class="character-portrait" />
-          <div class="character-details">
-            <h2 class="character-name"></h2>
-            <p class="character-description"></p>
-          </div>
         </div>`
-
     })
     root.innerHTML = cajita
-
+    
+    cajita = `<div>
+        <h2>PERSONAJES</h2>
+        <br>
+    </div>`;
+    
+    arrCharacter.forEach(character => {
+        const {
+            thumbnail: {
+                extension,
+                path
+            },
+            name
+        } = character;
+        cajita +=     `
+        <div class="resultados">  
+            <div tabindex="0" class="personaje">      
+                <div class="imagenPersonaje-container" id="personaje">
+                    <img src="${path + '.' + extension}" alt="" class="tamañoImagen" />
+                </div>
+                <div class="container-titulo-imagen">
+                    <h3 class="personaje-nombre">${name}</h3>
+                </div>
+            </div>
+        </div>`
+    })
+    root.innerHTML +=cajita;
 }
-
-

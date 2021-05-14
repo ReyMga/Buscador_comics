@@ -32,6 +32,7 @@ const printDetailComic = (arr, arrCharacter) => {
     document.getElementById('resultSection').style.display = 'none';
     document.getElementById('resultCount').style.display = 'none';
     let cajita = '';
+    
     arr.forEach(comic => {
         const {
             thumbnail: {
@@ -73,7 +74,7 @@ const printDetailComic = (arr, arrCharacter) => {
             <h2 class="titulo-personajes">PERSONAJES</h2>
             <p class="resultados-personajes">
                 <span class="total-personaje" id="resultado-personaje">
-                RESULTADOS
+                RESULTADOS ${arrCharacter.length}
                 </span>
             </p>
             <br>

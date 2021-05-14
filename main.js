@@ -71,11 +71,11 @@ const printDetailComic = (arr, arrCharacter) => {
     cajita = `
         <div class="resultados">  
             <h2 class="titulo-personajes">PERSONAJES</h2>
-            <a class="resultados-personajes">
+            <p class="resultados-personajes">
                 <span class="total-personaje" id="resultado-personaje">
-                Resultados
+                RESULTADOS
                 </span>
-            </a>
+            </p>
             <br>
             <br>
             </div>
@@ -97,9 +97,9 @@ const printDetailComic = (arr, arrCharacter) => {
                     <img src="${path + '.' + extension}" alt="" class="tamañoImagen" />
                 </a>
 
-                <div class="container-titulo-imagen">
+                <a class="container-titulo-imagen">
                     <h3 class="personaje-nombre">${name}</h3>
-                </div>
+                </a>
             </div>
             </div>
         `

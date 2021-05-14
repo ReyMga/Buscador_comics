@@ -104,7 +104,7 @@ option {
     flex-wrap: wrap;
 }
 
-.results-title {
+.results-title{
     margin-left: 7%;
 }
 
@@ -112,7 +112,7 @@ select:first-of-type {
     margin-right: 30px;
 }
 
-.results-count,
+.results-count, .resultados-personajes
 label {
     font-size: 13px;
     font-weight: bold;
@@ -263,12 +263,13 @@ a:hover p {
 .personaje {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 300px;
+    height: 390px;
     margin: 0 10px 40px;
     cursor: pointer;
 }
 
-.resultados {
+.respuestas {
     display: flex;
     flex-wrap: wrap;
     margin-top: 40px;
@@ -277,16 +278,21 @@ a:hover p {
 }
 
 
-.tamañoImagen{
+.tamañoImagen {
     height: 100%;
     transition: 0.2s;
 }
 
-img{
+img {
     width: 100%;
 }
 
-.container-titulo-imagen{
+.resultados {
+ display: block;
+ width: -webkit-fill-available;
+}
+
+.container-titulo-imagen {
     padding: 16px 24px 17px 20px;
     background-color: #151515;
     transition: 0.2s;
@@ -309,4 +315,11 @@ img{
     flex-grow: 1;
     border-bottom: 4px solid #ed1d23;
     overflow: hidden;
+    transition: 0.2s;
 }
+
+a:hover img {
+    transform: scale(1.2);
+    box-shadow: 5px 0px 3px rgba(0, 0, 0, 0.404);
+}
+

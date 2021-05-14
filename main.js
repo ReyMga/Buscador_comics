@@ -68,30 +68,41 @@ const printDetailComic = (arr, arrCharacter) => {
     })
     root.innerHTML = cajita
     
-    cajita = `<div>
-        <h2>PERSONAJES</h2>
-        <br>
-    </div>`;
-    
-    arrCharacter.forEach(character => {
-        const {
-            thumbnail: {
-                extension,
-                path
-            },
-            name
-        } = character;
-        cajita +=     `
+    cajita = `
         <div class="resultados">  
+            <h2 class="titulo-personajes">PERSONAJES</h2>
+            <a class="resultados-personajes">
+                <span class="total-personaje" id="resultado-personaje">
+                Resultados
+                </span>
+            </a>
+            <br>
+            <br>
+            </div>
+            `;
+        
+            arrCharacter.forEach(character => {
+            const {
+                thumbnail: {
+                    extension,
+                    path
+                },
+                name
+            } = character;
+            cajita +=     `
+            
+            <div class="respuestas">
             <div tabindex="0" class="personaje">      
-                <div class="imagenPersonaje-container" id="personaje">
+                <a class="imagenPersonaje-container" id="personaje">
                     <img src="${path + '.' + extension}" alt="" class="tamañoImagen" />
-                </div>
+                </a>
+
                 <div class="container-titulo-imagen">
                     <h3 class="personaje-nombre">${name}</h3>
                 </div>
             </div>
-        </div>`
+            </div>
+        `
     })
-    root.innerHTML +=cajita;
+    root.innerHTML +=cajita + '</div>';
 }

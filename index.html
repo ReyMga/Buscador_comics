@@ -23,93 +23,98 @@
 
 
 <body>
+    <div id="cover-spin">
+        <div id="loader" style="display: none;"> </div>
+    </div>
     <!-- HEADER -->
     <header class="header">
-        <div class="column logo-container">
-            <h1 class="logo">COMICS FACTORY</h1>
-        </div>
+            <div class="column logo-container">
+                <h1 class="logo">COMICS FACTORY</h1>
+            </div>
     </header>
 
     <!-- LOGO -->
     <section class="hero is-danger is-halfheight img">
-        <div class="hero-body"></div>
+            <div class="hero-body"></div>
     </section>
 
     <main class="column">
-        <!-- BUSQUEDA -->
-        <section class="search">
-            <h2 id="busqueda">BÚSQUEDA</h2>
-            <div class="search-container" id="columnas-busqueda">
-                <div class="search-input-container">
-                    <input id="input-busqueda" class="search-input" type="text" placeholder="Ingresa tu búsqueda">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                </div>
-                <div class="search-inner-container">
-                    <div class="sort-container">
-                        <label for="search-type" class="label mx-5 label-select pt-2">TIPO</label>
-                        <select name="search-type" id="select-tipo-personaje" class="select busquedaSelectSection">
-                            <option>COMICS</option>
-                            <option>PERSONAJES</option>
-                        </select>
-                        <label for="search-sort" class="label mx-5 label-select pt-2">ORDEN</label>
-                        <select id="select-orden" name="search-sort" class="select select-busq">
-                            <option>A/Z</option>
-                            <option>Z/A</option>
-                            <option>Más nuevos</option>
-                            <option>Más viejos</option>
-                        </select>
+            <!-- BUSQUEDA -->
+            <section class="search">
+                <h2 id="busqueda">BÚSQUEDA</h2>
+                <div class="search-container" id="columnas-busqueda">
+                    <div class="search-input-container">
+                        <input id="input-busqueda" class="search-input" type="text" placeholder="Ingresa tu búsqueda">
+                        <i class="fas fa-search" aria-hidden="true"></i>
                     </div>
-                    <button class="button is-warning mx-6" id="boton-buscar">BUSCAR</button>
-                </div>
-                <div>
-        </section>
+                    <div class="search-inner-container">
+                        <div class="sort-container">
+                            <label for="search-type" class="label mx-5 label-select pt-2">TIPO</label>
+                            <select name="search-type" id="select-tipo-personaje" class="select busquedaSelectSection">
+                                <option>COMICS</option>
+                                <option>PERSONAJES</option>
+                            </select>
+                            <label for="search-sort" class="label mx-5 label-select pt-2">ORDEN</label>
+                            <select id="select-orden" name="search-sort" class="select select-busq">
+                                <option>A/Z</option>
+                                <option>Z/A</option>
+                                <option>Más nuevos</option>
+                                <option>Más viejos</option>
+                            </select>
+                        </div>
+                        <button class="button is-warning mx-6" id="boton-buscar">BUSCAR</button>
+                    </div>
+                    <div>
+            </section>
 
-        <!--SECCIÓN RESULTADO DE BÚSQUEDA-->
-        <div id="resultSection" class="results-section">
-            <h2 class="results-title"> RESULTADOS </h2>
-        </div>
-        <p id="resultCount" class="results-count">
-            <span class="results-number" id="quantity">0</span>
-            RESULTADOS
-        </p>
-        <div class="results"></div>
+            <!--SECCIÓN RESULTADO DE BÚSQUEDA-->
+            <div id="resultSection" class="results-section">
+                <h2 class="results-title"> RESULTADOS </h2>
+            </div>
+            <p id="resultCount" class="results-count">
+                <span class="results-number" id="quantity">0</span>
+                RESULTADOS
+            </p>
+            <div class="results"></div>
 
 
-        <!-- GALERIA COMICS -->
-        <section class="container mb-5">
-            <div id="root" class="columns is-flex-wrap-wrap"></div>
-        </section>
+            <!-- GALERIA COMICS -->
+            <section class="container mb-5">
+                <div id="root" class="columns is-flex-wrap-wrap"></div>
+            </section>
 
-        <!-- PAGINADOR -->
-        <section class="container is-flex is-justify-content-center my-6">
-            <button id="paginaPrincipal" class="button button mr-3">
-                <i class="fas fa-caret-square-left is-size-4"></i>
-            </button>
-            <button id="boton1" class="button mr-2">
-                <i class="fas fa-caret-left is-size-4"></i>
-            </button>
-            <button id="boton2" class="button">
-                <i class="fas fa-caret-right is-size-4"></i>
-            </button>
-            <button id="lastPage" class="button ml-3">
-                <i class="fas fa-caret-square-right is-size-4"></i>
-            </button>
-        </section>
- 
+            <!-- PAGINADOR -->
+            <section class="container is-flex is-justify-content-center my-6">
+                <button id="paginaPrincipal" class="button button mr-3">
+                    <i class="fas fa-caret-square-left is-size-4"></i>
+                </button>
+                <button id="boton1" class="button mr-2">
+                    <i class="fas fa-caret-left is-size-4"></i>
+                </button>
+                <button id="boton2" class="button">
+                    <i class="fas fa-caret-right is-size-4"></i>
+                </button>
+                <button id="lastPage" class="button ml-3">
+                    <i class="fas fa-caret-square-right is-size-4"></i>
+                </button>
+            </section>
+    
     </main>
 
 
     <!-- FOOTER -->
     <footer>
-        <span class="column footer">Hecho con 🤎 por Silvina & Raquel</span>
+            <span class="column footer">Hecho con 🤎 por Silvina & Raquel</span>
     </footer>
 
+   
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"
         integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ=="
         crossorigin="anonymous"></script>
     <script src="./app.js"></script>
     <script src="./main.js"></script>
+ 
 </body>
 
 </html>

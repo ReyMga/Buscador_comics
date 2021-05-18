@@ -5,7 +5,7 @@ const timestamp = Date.now();
 
 const hash = md5(timestamp + privada + publica);
 
-/*********************************  DOM  *******************************/
+/*********************************  DOM   *******************************/
 const boton1 = document.getElementById('boton1');
 const boton2 = document.getElementById('boton2');
 const paginaPrincipal = document.getElementById('paginaPrincipal');
@@ -14,14 +14,17 @@ const botonLastPage = document.getElementById('lastPage');
 let offset = 0;
 let resultsCount = 0;
 
-// const url = `http://gateway.marvel.com/v1/public/comics?ts=${timestamp}&apikey=${publica}&hash=${hash}`;
-// const url = `http://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+
+
+//Pantalla principal 
 
 const fetchData = () => {
     const url = `https://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+    loader('show');
     fetch(url)
         .then(response => response.json())
         .then(obj => {
+            loader('hide'),
             resultsCount = obj.data.total;
             printData(obj.data)
         })
@@ -59,9 +62,10 @@ botonLastPage.onclick = () => {
 const goToDetail = async id => {
     const url = `https://gateway.marvel.com/v1/public/comics/${id}?ts=${timestamp}&apikey=${publica}&hash=${hash}`;
     const characterUrl = `https://gateway.marvel.com/v1/public/comics/${id}/characters?apikey=${publica}&ts=${timestamp}&hash=${hash}&offset=0`
-
+    loader('show');
     let data = await myFetch(url);
     let character = await myFetch(characterUrl);
+    loader('hide'),
     printDetailComic(data.data.results, character.data.results);
 }
 
@@ -76,3 +80,37 @@ const myFetch = async (url) => {
     const data = await response.json();
     return data;
 }
+
+//Tercer pantalla
+const thirdScreenFunction = async id => {
+    const url = `https://gateway.marvel.com/v1/public/characters/${id}?apikey=${publica}&ts=${timestamp}&hash=${hash}&offset=0`;
+    const comicUrl = `https://gateway.marvel.com/v1/public/characters/${id}/comics?apikey=${publica}&ts=${timestamp}&hash=${hash}&offset=0`
+    loader('show');
+    let data = await myFetchPageThird(url);
+    let comic = await myFetchPageThird(comicUrl);
+    loader('hide'),
+    thirdScreen(data.data.results, comic.data.results);
+}
+
+
+const myFetchPageThird = async (url) => {
+    let response = await fetch(url);
+    if (!response.ok) {
+        const message = `An error has occured: ${response.status}`;
+        //throw new Error(message);
+        console.error(message);
+    }
+    const data = await response.json();
+    return data;
+}
+
+function loader(action ) {
+    if(action === 'show'){
+    document.getElementById("loader").style.display = "";
+    document.getElementById("cover-spin").style.display = "";
+    }else{
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("cover-spin").style.display = "none";
+    }
+}
+

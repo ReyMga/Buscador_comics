@@ -70,19 +70,35 @@ const printDetailComic = (arr, arrCharacter) => {
     })
     root.innerHTML = cajita
     
+    if(arrCharacter.length > 0){
     cajita = `
         <div class="resultados">  
             <h2 class="titulo-personajes">PERSONAJES</h2>
             <p class="resultados-personajes">
                 <span class="total-personaje" id="resultado-personaje">
-                RESULTADOS ${arrCharacter.length}
+                ${arrCharacter.length} RESULTADOS 
                 </span>
             </p>
             <br>
             <br>
         </div>
         `;
-        
+    }else if(arrCharacter.length === 0){
+        cajita = `
+        <div class="resultados">  
+            <h2 class="titulo-personajes">PERSONAJES</h2>
+            <p class="resultados-personajes">
+                <span class="total-personaje" id="resultado-personaje">
+                0 RESULTADOS
+                </span>
+            </p>
+            <p class="sinResultados"> No se han encontrado resultados</p>
+            <br>
+            <br>
+        </div>
+        `;
+    }
+
             arrCharacter.forEach(character => {
             const {
                 thumbnail: {

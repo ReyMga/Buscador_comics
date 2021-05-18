@@ -81,6 +81,8 @@ const myFetch = async (url) => {
     return data;
 }
 
+
+
 //Tercer pantalla
 const thirdScreenFunction = async id => {
     const url = `https://gateway.marvel.com/v1/public/characters/${id}?apikey=${publica}&ts=${timestamp}&hash=${hash}&offset=0`;
@@ -104,6 +106,8 @@ const myFetchPageThird = async (url) => {
     return data;
 }
 
+
+//Boton de Onload 
 function loader(action ) {
     if(action === 'show'){
     document.getElementById("loader").style.display = "";
@@ -113,4 +117,6 @@ function loader(action ) {
         document.getElementById("cover-spin").style.display = "none";
     }
 }
+
+
 

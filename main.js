@@ -83,7 +83,7 @@ const printDetailComic = (arr, arrCharacter) => {
             <br>
         </div>
         `;
-    }else if(arrCharacter.length === 0){
+    }else{
         cajita = `
         <div class="resultados">  
             <h2 class="titulo-personajes">PERSONAJES</h2>
@@ -127,8 +127,7 @@ const printDetailComic = (arr, arrCharacter) => {
 }
 
 
-
-
+//Tercera pantalla
 const thirdScreen = (arr, arrComics) => {
 
     document.getElementById('resultSection').style.display = 'none';

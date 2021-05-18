@@ -284,6 +284,19 @@ a:hover p {
     min-height: 300px;
 }
 
+.sinResultados {
+    font-size: 22px;
+    color: black;
+    margin-top: 22px;
+}
+
+.total-personaje{
+    font-size: 13px;
+    font-family: system-ui;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #757575;
+}
 
 .tamañoImagen {
     height: 100%;
@@ -427,3 +440,4 @@ h3 {
     display: none;
     text-align: center;
 }
+

@@ -99,7 +99,6 @@ const printDetailComic = (arr, arrCharacter) => {
         `;
     }
 
-
             arrCharacter.forEach(character => {
             const {
                 thumbnail: {

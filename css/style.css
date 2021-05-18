@@ -339,3 +339,91 @@ a:hover {
     opacity: 0.5;
     opacity: 1;
 }
+
+h3 {
+    color: black;
+    font-size: 37px;
+    font-weight: bold;
+}
+
+/* Center the loader */
+#cover-spin {
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(252, 225, 225, 0.7);
+    z-index:9999;
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #b31212;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0px;
+        opacity: 1
+    }
+}
+
+@keyframes animatebottom {
+    from {
+        bottom: -100px;
+        opacity: 0
+    }
+
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+#myDiv {
+    display: none;
+    text-align: center;
+}

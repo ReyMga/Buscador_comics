@@ -28,6 +28,7 @@ const printData = data => {
     root.innerHTML = cajita
 }
 
+//Segunda pantalla
 const printDetailComic = (arr, arrCharacter) => {
     document.getElementById('resultSection').style.display = 'none';
     document.getElementById('resultCount').style.display = 'none';
@@ -79,8 +80,8 @@ const printDetailComic = (arr, arrCharacter) => {
             </p>
             <br>
             <br>
-            </div>
-            `;
+        </div>
+        `;
         
             arrCharacter.forEach(character => {
             const {
@@ -88,8 +89,84 @@ const printDetailComic = (arr, arrCharacter) => {
                     extension,
                     path
                 },
-                name
+                name,
+                id
             } = character;
+
+            cajita +=`
+            <div class="respuestas" onclick="thirdScreenFunction(${id})">
+                <div tabindex="0" class="personaje">      
+                    <a class="imagenPersonaje-container" id="personaje">
+                        <img src="${path + '.' + extension}" alt="" class="tamañoImagen" />
+                    </a>
+
+                    <a class="container-titulo-imagen">
+                        <h3 class="personaje-nombre">${name}</h3>
+                    </a>
+                </div>
+            </div>
+        `
+    })
+    root.innerHTML += cajita + '</div>';
+}
+
+
+
+
+const thirdScreen = (arr, arrComics) => {
+
+    document.getElementById('resultSection').style.display = 'none';
+    document.getElementById('resultCount').style.display = 'none';
+    let cajita = '';
+    
+    arr.forEach(character => {
+        const {
+            thumbnail: {
+                extension,
+                path
+            },
+            name,
+            description,
+        } = character;
+
+        cajita += `
+        <div class="columns" id="columns">
+            <div class="column is-one-quarter">
+                <figure class="img-detalle">
+                    <img src="${path}.${extension}">
+                </figure>
+            </div>
+            <div class="column">
+                <h3 class="titleName">${name}</h3>
+                <br>
+                <h4>Descripción:</h4>
+                <p>${description}</p>
+            </div>
+        </div>`
+    })
+    root.innerHTML = cajita
+    
+    cajita = `
+        <div class="resultados">  
+            <h2 class="titulo-personajes">PERSONAJES</h2>
+            <p class="resultados-personajes">
+                <span class="total-personaje" id="resultado-personaje">
+                RESULTADOS ${arrComics.length}
+                </span>
+            </p>
+            <br>
+            <br>
+            </div>
+            `;
+        
+            arrComics.forEach(comic => {
+            const {
+                thumbnail: {
+                    extension,
+                    path
+                },
+                title
+            } = comic;
             cajita +=     `
             
             <div class="respuestas">
@@ -99,7 +176,7 @@ const printDetailComic = (arr, arrCharacter) => {
                 </a>
 
                 <a class="container-titulo-imagen">
-                    <h3 class="personaje-nombre">${name}</h3>
+                    <h3 class="personaje-nombre">${title}</h3>
                 </a>
             </div>
             </div>

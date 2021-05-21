@@ -89,9 +89,8 @@ const thirdScreenFunction = async id => {
     let data = await myFetchPageThird(url);
     let comic = await myFetchPageThird(comicUrl);
     loader('hide'),
-    thirdScreen(data.data.results, comic.data.results);
+    thirdScreen(data.data.results, comic.data);
 }
-
 
 const myFetchPageThird = async (url) => {
     let response = await fetch(url);
@@ -104,6 +103,9 @@ const myFetchPageThird = async (url) => {
     return data;
 }
 
+// }
+
+//Boton de Onload
 function loader(action ) {
     if(action === 'show'){
     document.getElementById("loader").style.display = "";

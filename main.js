@@ -16,7 +16,7 @@ const printData = data => {
             },
             id
         } = comic;
-        cajita += `<div class="column is-one-fifth" onclick="goToDetail(${id})">
+        cajita += `<div class="column is-one-fifth" id="article" onclick="goToDetail(${id})">
             <figure class="imgClass">
                 <a>
                 <img style='height: 320px; width: 210px' src="${path === pathNonFoundNowanted ? pathNonFoundWanted : path}.${extension}" alt="${title}">
@@ -27,6 +27,8 @@ const printData = data => {
     });
     root.innerHTML = cajita
 }
+
+
 
 //Segunda pantalla
 const printDetailComic = (arr, arrCharacter) => {

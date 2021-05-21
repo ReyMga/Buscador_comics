@@ -8,6 +8,7 @@ const hash = md5(timestamp + privada + publica);
 /*********************************  DOM   *******************************/
 const boton1 = document.getElementById('boton1');
 const boton2 = document.getElementById('boton2');
+const botonBuscar = document.getElementById('boton-buscar');
 const paginaPrincipal = document.getElementById('paginaPrincipal');
 const botonLastPage = document.getElementById('lastPage');
 
@@ -19,7 +20,34 @@ let resultsCount = 0;
 //Pantalla principal 
 
 const fetchData = () => {
-    const url = `https://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+
+    let busqueda = document.getElementById('input-busqueda');
+    let tipo = document.getElementById('select-tipo');
+    let orden = document.getElementById('select-orden');
+
+
+    let tipoUrl = 'comics';
+    let nameUrl = '';
+    let ordenUrl = '&orderBy=title'
+
+    if(tipo.value.toUpperCase() !== 'COMICS'){
+        tipoUrl = 'characters';
+    }
+    if (orden.value.toUpperCase() !== 'A/Z') {
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        ordenUrl = orden.value.toUpperCase() === 'Z/A' ? `&orderBy=-${baseUrlType}` : 
+                   orden.value.toUpperCase() === 'MÁS NUEVOS' ? `&orderBy=-focDate` : 
+                   orden.value.toUpperCase() === 'MÁS VIEJOS' ? `&orderBy=focDate`:
+                   '&orderBy=title';
+    }
+    if(busqueda.value !== ''){
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        nameUrl = `&${baseUrlType}StartsWith=${busqueda.value}`;
+    }
+
+
+    const url = `https://gateway.marvel.com/v1/public/${tipoUrl}?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}${ordenUrl}${nameUrl}`;
+
     loader('show');
     fetch(url)
         .then(response => response.json())
@@ -32,6 +60,10 @@ const fetchData = () => {
 }
 
 fetchData();
+
+
+
+
 
 /*********************************  FUNCIONALIDAD PAGINADO  *******************************/
 

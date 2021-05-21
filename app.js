@@ -8,6 +8,7 @@ const hash = md5(timestamp + privada + publica);
 /*********************************  DOM   *******************************/
 const boton1 = document.getElementById('boton1');
 const boton2 = document.getElementById('boton2');
+const botonBuscar = document.getElementById('boton-buscar');
 const paginaPrincipal = document.getElementById('paginaPrincipal');
 const botonLastPage = document.getElementById('lastPage');
 
@@ -19,19 +20,64 @@ let resultsCount = 0;
 //Pantalla principal 
 
 const fetchData = () => {
-    const url = `https://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+
+    let busqueda = document.getElementById('input-busqueda');
+    let tipo = document.getElementById('select-tipo');
+    let orden = document.getElementById('select-orden');
+    console.log(orden.value);
+
+
+    let tipoUrl = 'comics';
+    let nameUrl = '';
+    let ordenUrl = '&orderBy=title'
+
+    if(tipo.value.toUpperCase() !== 'COMICS'){
+        tipoUrl = 'characters';
+        ordenUrl = '&orderBy=name'
+    }
+    if (orden.value.toUpperCase() !== 'A/Z') {
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        ordenUrl = orden.value.toUpperCase() === 'Z/A' ? `&orderBy=-${baseUrlType}` : 
+                   orden.value.toUpperCase() === 'MÁS NUEVOS' ? `&orderBy=-focDate` : 
+                   orden.value.toUpperCase() === 'MÁS VIEJOS' ? `&orderBy=focDate`:
+                   '&orderBy=title'
+    }
+    if(busqueda.value !== ''){
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        nameUrl = `&${baseUrlType}StartsWith=${busqueda.value}`;
+    }
+
+    
+    const conditionUrl = (data)=>{
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        if (baseUrlType === 'title') {
+            printData(data)
+        }
+        if (baseUrlType === 'name') {
+            printDataCharacter(data)
+        }
+    }
+
+    const url = `https://gateway.marvel.com/v1/public/${tipoUrl}?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}${ordenUrl}${nameUrl}`;
+    console.log(url);
+
     loader('show');
     fetch(url)
         .then(response => response.json())
         .then(obj => {
             loader('hide'),
             resultsCount = obj.data.total;
-            printData(obj.data)
+            conditionUrl(obj.data)
+            console.log(obj, 'aqui');
         })
         .catch(error => console.error(error))
 }
 
 fetchData();
+
+
+
+
 
 /*********************************  FUNCIONALIDAD PAGINADO  *******************************/
 

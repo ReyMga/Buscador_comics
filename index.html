@@ -50,9 +50,9 @@
                     <div class="search-inner-container">
                         <div class="sort-container">
                             <label for="search-type" class="label mx-5 label-select pt-2">TIPO</label>
-                            <select name="search-type" id="select-tipo-personaje" class="select busquedaSelectSection">
-                                <option>COMICS</option>
-                                <option>PERSONAJES</option>
+                            <select name="search-type" id="select-tipo" class="select busquedaSelectSection">
+                                <option onclick="handlerOnclickType('comic')">COMICS</option>
+                                <option onclick="handlerOnclickType('character')">PERSONAJES</option>
                             </select>
                             <label for="search-sort" class="label mx-5 label-select pt-2">ORDEN</label>
                             <select id="select-orden" name="search-sort" class="select select-busq">
@@ -62,7 +62,7 @@
                                 <option>Más viejos</option>
                             </select>
                         </div>
-                        <button class="button is-warning mx-6" id="boton-buscar">BUSCAR</button>
+                        <button class="button is-warning mx-6" id="boton-buscar" onclick="fetchData()">BUSCAR</button>
                     </div>
                     <div>
             </section>

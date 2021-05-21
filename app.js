@@ -24,6 +24,7 @@ const fetchData = () => {
     let busqueda = document.getElementById('input-busqueda');
     let tipo = document.getElementById('select-tipo');
     let orden = document.getElementById('select-orden');
+    console.log(orden.value);
 
 
     let tipoUrl = 'comics';
@@ -32,21 +33,33 @@ const fetchData = () => {
 
     if(tipo.value.toUpperCase() !== 'COMICS'){
         tipoUrl = 'characters';
+        ordenUrl = '&orderBy=name'
     }
     if (orden.value.toUpperCase() !== 'A/Z') {
         let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
         ordenUrl = orden.value.toUpperCase() === 'Z/A' ? `&orderBy=-${baseUrlType}` : 
                    orden.value.toUpperCase() === 'MÁS NUEVOS' ? `&orderBy=-focDate` : 
                    orden.value.toUpperCase() === 'MÁS VIEJOS' ? `&orderBy=focDate`:
-                   '&orderBy=title';
+                   '&orderBy=title'
     }
     if(busqueda.value !== ''){
         let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
         nameUrl = `&${baseUrlType}StartsWith=${busqueda.value}`;
     }
 
+    
+    const conditionUrl = (data)=>{
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        if (baseUrlType === 'title') {
+            printData(data)
+        }
+        if (baseUrlType === 'name') {
+            printDataCharacter(data)
+        }
+    }
 
     const url = `https://gateway.marvel.com/v1/public/${tipoUrl}?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}${ordenUrl}${nameUrl}`;
+    console.log(url);
 
     loader('show');
     fetch(url)
@@ -54,7 +67,8 @@ const fetchData = () => {
         .then(obj => {
             loader('hide'),
             resultsCount = obj.data.total;
-            printData(obj.data)
+            conditionUrl(obj.data)
+            console.log(obj, 'aqui');
         })
         .catch(error => console.error(error))
 }

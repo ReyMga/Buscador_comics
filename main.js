@@ -6,8 +6,9 @@ const printData = data => {
     let cajita = '';
     let arr = data.results;
     document.getElementById('quantity').innerText = data.total;
+    console.log(data.results, 'HOLA');
     arr.forEach(comic => {
-        // console.log(comic);
+        console.log(comic);
         const {
             title,
             thumbnail: {
@@ -28,6 +29,35 @@ const printData = data => {
     root.innerHTML = cajita
 }
 
+
+const printDataCharacter = data => {
+    const pathNonFoundNowanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
+    const pathNonFoundWanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny"
+    let cajita = '';
+    let arr = data.results;
+    document.getElementById('quantity').innerText = data.total;
+    console.log(data.results, 'HOLA');
+    arr.forEach(comic => {
+        console.log(comic);
+        const {
+            name,
+            thumbnail: {
+                extension,
+                path
+            },
+            id
+        } = comic;
+        cajita += `<div class="column is-one-fifth" id="article" onclick="goToDetail(${id})">
+            <figure class="imgClass">
+                <a>
+                <img style='height: 320px; width: 210px' src="${path === pathNonFoundNowanted ? pathNonFoundWanted : path}.${extension}" alt="${name}">
+                <p>${name}</p>
+                </a>
+            </figure>
+            </div>`
+    });
+    root.innerHTML = cajita
+}
 
 
 //Segunda pantalla

@@ -195,7 +195,7 @@ const thirdScreen = (arr, arrComics) => {
     
     cajita = `
         <div class="resultados">  
-            <h2 class="titulo-personajes">PERSONAJES</h2>
+            <h2 class="titulo-personajes">COMICS</h2>
             <p class="resultados-personajes">
                 <span class="total-personaje" id="resultado-personaje">
                 RESULTADOS ${arrComics.length}
@@ -212,11 +212,12 @@ const thirdScreen = (arr, arrComics) => {
                     extension,
                     path
                 },
-                title
+                title,
+                id
             } = comic;
             cajita +=     `
             
-            <div class="respuestas">
+            <div class="respuestas" onclick="goToDetail(${id})">
             <div tabindex="0" class="personaje">      
                 <a class="imagenPersonaje-container" id="personaje">
                     <img src="${path + '.' + extension}" alt="" class="tamañoImagen" />

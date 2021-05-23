@@ -1,12 +1,13 @@
 const root = document.getElementById('root');
 
-const printData = data => {
+//COMICs
+const printData = (data) => {
     const pathNonFoundNowanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
     const pathNonFoundWanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny"
     let cajita = '';
     let arr = data.results;
     document.getElementById('quantity').innerText = data.total;
-    console.log(data.results, 'HOLA');
+
     arr.forEach(comic => {
         console.log(comic);
         const {
@@ -25,20 +26,21 @@ const printData = data => {
                 </a>
             </figure>
             </div>`
+
     });
     root.innerHTML = cajita
+
+
 }
 
-
+//PERSONAJES
 const printDataCharacter = data => {
     const pathNonFoundNowanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
     const pathNonFoundWanted = "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available/portrait_uncanny"
     let cajita = '';
     let arr = data.results;
     document.getElementById('quantity').innerText = data.total;
-    console.log(data.results, 'HOLA');
-    arr.forEach(comic => {
-        console.log(comic);
+    arr.forEach(personaje => {
         const {
             name,
             thumbnail: {
@@ -46,8 +48,8 @@ const printDataCharacter = data => {
                 path
             },
             id
-        } = comic;
-        cajita += `<div class="column is-one-fifth" id="article" onclick="goToDetail(${id})">
+        } = personaje;
+        cajita += `<div class="column is-one-fifth" id="article" onclick="thirdScreenFunction(${id})">
             <figure class="imgClass">
                 <a>
                 <img style='height: 320px; width: 210px' src="${path === pathNonFoundNowanted ? pathNonFoundWanted : path}.${extension}" alt="${name}">
@@ -57,6 +59,8 @@ const printDataCharacter = data => {
             </div>`
     });
     root.innerHTML = cajita
+
+
 }
 
 
@@ -65,7 +69,7 @@ const printDetailComic = (arr, arrCharacter) => {
     document.getElementById('resultSection').style.display = 'none';
     document.getElementById('resultCount').style.display = 'none';
     let cajita = '';
-    
+
     arr.forEach(comic => {
         const {
             thumbnail: {
@@ -77,8 +81,8 @@ const printDetailComic = (arr, arrCharacter) => {
             dates,
             creators
         } = comic;
-        const releaseDate = new Intl.DateTimeFormat('es-AR').format(new Date(dates?.find(el => el.type === 'onsaleDate').date))
-        const writer = creators?.items?.filter(el => el.role === 'writer')
+        const releaseDate = new Intl.DateTimeFormat('es-AR').format(new Date(dates ?.find(el => el.type === 'onsaleDate').date))
+        const writer = creators ?.items ?.filter(el => el.role === 'writer')
         cajita += `
         <div class="columns" id="columns">
             <div class="column is-one-quarter">
@@ -101,9 +105,9 @@ const printDetailComic = (arr, arrCharacter) => {
         </div>`
     })
     root.innerHTML = cajita
-    
-    if(arrCharacter.length > 0){
-    cajita = `
+
+    if (arrCharacter.length > 0) {
+        cajita = `
         <div class="resultados">  
             <h2 class="titulo-personajes">PERSONAJES</h2>
             <p class="resultados-personajes">
@@ -115,7 +119,7 @@ const printDetailComic = (arr, arrCharacter) => {
             <br>
         </div>
         `;
-    }else{
+    } else {
         cajita = `
         <div class="resultados">  
             <h2 class="titulo-personajes">PERSONAJES</h2>
@@ -131,17 +135,17 @@ const printDetailComic = (arr, arrCharacter) => {
         `;
     }
 
-            arrCharacter.forEach(character => {
-            const {
-                thumbnail: {
-                    extension,
-                    path
-                },
-                name,
-                id
-            } = character;
+    arrCharacter.forEach(character => {
+        const {
+            thumbnail: {
+                extension,
+                path
+            },
+            name,
+            id
+        } = character;
 
-            cajita +=`
+        cajita += `
             <div class="respuestas" onclick="thirdScreenFunction(${id})">
                 <div tabindex="0" class="personaje">      
                     <a class="imagenPersonaje-container" id="personaje">
@@ -165,7 +169,7 @@ const thirdScreen = (arr, arrComics) => {
     document.getElementById('resultSection').style.display = 'none';
     document.getElementById('resultCount').style.display = 'none';
     let cajita = '';
-    
+
     arr.forEach(character => {
         const {
             thumbnail: {
@@ -192,7 +196,7 @@ const thirdScreen = (arr, arrComics) => {
         </div>`
     })
     root.innerHTML = cajita
-    
+
     cajita = `
         <div class="resultados">  
             <h2 class="titulo-personajes">COMICS</h2>
@@ -205,17 +209,17 @@ const thirdScreen = (arr, arrComics) => {
             <br>
             </div>
             `;
-        
-            arrComics.forEach(comic => {
-            const {
-                thumbnail: {
-                    extension,
-                    path
-                },
-                title,
-                id
-            } = comic;
-            cajita +=     `
+
+    arrComics.forEach(comic => {
+        const {
+            thumbnail: {
+                extension,
+                path
+            },
+            title,
+            id
+        } = comic;
+        cajita += `
             
             <div class="respuestas" onclick="goToDetail(${id})">
             <div tabindex="0" class="personaje">      
@@ -230,5 +234,5 @@ const thirdScreen = (arr, arrComics) => {
             </div>
         `
     })
-    root.innerHTML +=cajita + '</div>';
+    root.innerHTML += cajita + '</div>';
 }

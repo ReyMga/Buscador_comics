@@ -56,6 +56,7 @@ const fetchData = () => {
         if (baseUrlType === 'name') {
             printDataCharacter(data)
         }
+        
     }
 
     const url = `https://gateway.marvel.com/v1/public/${tipoUrl}?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}${ordenUrl}${nameUrl}`;

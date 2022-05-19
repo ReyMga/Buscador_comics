@@ -8,30 +8,107 @@ const hash = md5(timestamp + privada + publica);
 /*********************************  DOM   *******************************/
 const boton1 = document.getElementById('boton1');
 const boton2 = document.getElementById('boton2');
+const botonBuscar = document.getElementById('boton-buscar');
 const paginaPrincipal = document.getElementById('paginaPrincipal');
 const botonLastPage = document.getElementById('lastPage');
+let orden = document.getElementById('select-orden');
+let tipo = document.getElementById('select-tipo');
+
 
 let offset = 0;
 let resultsCount = 0;
 
 
+const cargarCombo = () => {
+
+    let ordenA = document.createElement("option");
+    let ordenZ = document.createElement("option");
+    let ordenNew = document.createElement("option");
+    let ordenOld = document.createElement("option");
+
+
+    let textA = document.createTextNode("A/Z");
+    let textZ = document.createTextNode("Z/A");
+    let textNew = document.createTextNode("Más Nuevos");
+    let textOld = document.createTextNode("Más Viejos");
+
+    ordenA.appendChild(textA);
+    ordenZ.appendChild(textZ);
+    ordenNew.appendChild(textNew);
+    ordenOld.appendChild(textOld);
+
+    orden.innerHTML = '';
+
+    orden.appendChild(ordenA);
+    orden.appendChild(ordenZ);
+    if (tipo.value === 'COMICS') {
+        orden.appendChild(ordenNew);
+        orden.appendChild(ordenOld);
+    }
+
+}
 
 //Pantalla principal 
 
 const fetchData = () => {
-    const url = `https://gateway.marvel.com/v1/public/comics?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}`;
+
+    let busqueda = document.getElementById('input-busqueda');
+
+
+    let tipoUrl = 'comics';
+    let nameUrl = '';
+    let ordenUrl = '&orderBy=title'
+
+    if (tipo.value.toUpperCase() !== 'COMICS') {
+        tipoUrl = 'characters';
+        ordenUrl = '&orderBy=name'
+    }
+    if (orden.value.toUpperCase() !== 'A/Z') {
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        ordenUrl = orden.value.toUpperCase() === 'Z/A' ? `&orderBy=-${baseUrlType}` :
+            orden.value.toUpperCase() === 'MÁS NUEVOS' ? `&orderBy=-focDate` :
+            orden.value.toUpperCase() === 'MÁS VIEJOS' ? `&orderBy=focDate` :
+            '&orderBy=title'
+    }
+    if (busqueda.value !== '') {
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        nameUrl = `&${baseUrlType}StartsWith=${busqueda.value}`;
+    }
+
+
+    const conditionUrl = (data) => {
+        let baseUrlType = tipo.value.toUpperCase() === 'COMICS' ? 'title' : 'name'
+        if (baseUrlType === 'title') {
+            printData(data)
+        }
+        if (baseUrlType === 'name') {
+            printDataCharacter(data)
+        }
+
+    }
+
+    const url = `https://gateway.marvel.com/v1/public/${tipoUrl}?limit=20&offset=${offset}&ts=${timestamp}&apikey=${publica}&hash=${hash}${ordenUrl}${nameUrl}`;
+    console.log(url);
+
     loader('show');
     fetch(url)
         .then(response => response.json())
         .then(obj => {
             loader('hide'),
-            resultsCount = obj.data.total;
-            printData(obj.data)
+                resultsCount = obj.data.total;
+            conditionUrl(obj.data)
         })
         .catch(error => console.error(error))
 }
+//OnLoad
 
 fetchData();
+cargarCombo();
+tipo.addEventListener('change', () => {
+    cargarCombo();
+});
+
+
 
 /*********************************  FUNCIONALIDAD PAGINADO  *******************************/
 
@@ -66,7 +143,7 @@ const goToDetail = async id => {
     let data = await myFetch(url);
     let character = await myFetch(characterUrl);
     loader('hide'),
-    printDetailComic(data.data.results, character.data.results);
+        printDetailComic(data.data.results, character.data.results);
 }
 
 
@@ -81,6 +158,8 @@ const myFetch = async (url) => {
     return data;
 }
 
+
+
 //Tercer pantalla
 const thirdScreenFunction = async id => {
     const url = `https://gateway.marvel.com/v1/public/characters/${id}?apikey=${publica}&ts=${timestamp}&hash=${hash}&offset=0`;
@@ -89,7 +168,7 @@ const thirdScreenFunction = async id => {
     let data = await myFetchPageThird(url);
     let comic = await myFetchPageThird(comicUrl);
     loader('hide'),
-    thirdScreen(data.data.results, comic.data.results);
+        thirdScreen(data.data.results, comic.data.results);
 }
 
 
@@ -104,13 +183,14 @@ const myFetchPageThird = async (url) => {
     return data;
 }
 
-function loader(action ) {
-    if(action === 'show'){
-    document.getElementById("loader").style.display = "";
-    document.getElementById("cover-spin").style.display = "";
-    }else{
+
+//Boton de Onload 
+function loader(action) {
+    if (action === 'show') {
+        document.getElementById("loader").style.display = "";
+        document.getElementById("cover-spin").style.display = "";
+    } else {
         document.getElementById("loader").style.display = "none";
         document.getElementById("cover-spin").style.display = "none";
     }
 }
-
